@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "NoisySprite.h"
+#import "SimpleAudioEngine.h"
 
 @interface GameScene : CCLayer {
-    NSMutableArray *baddies;
-    NoisySprite* goodie;
-
+  NSMutableArray *baddies;
+  NoisySprite* goodie;
+  SimpleAudioEngine *sae;
 }
 
 +(id) scene;

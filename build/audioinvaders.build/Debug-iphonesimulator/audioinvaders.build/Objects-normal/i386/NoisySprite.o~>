@@ -1,6 +1,0 @@
-In file included from /Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.m:9:
-/Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.h:17: error: expected specifier-qualifier-list before ‘ALuint’
-/Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.h:21: error: expected specifier-qualifier-list before ‘ALuint’
-/Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.m:14: error: no declaration of property ‘sound’ found in the interface
-/Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.m:16: warning: property ‘soundPath’ requires method '-soundPath' to be defined - use @synthesize, @dynamic or provide a method implementation
-/Users/orta/spiel/iphone/audioinvaders/Classes/../NoisySprite.m:16: warning: property ‘soundPath’ requires the method 'setSoundPath:' to be defined - use @synthesize, @dynamic or provide a method implementation

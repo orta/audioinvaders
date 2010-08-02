@@ -7,7 +7,7 @@
   //
 
 #import "GameScene.h"
-
+#import "CocosDenshion.h"
 
 @implementation GameScene
 
@@ -21,13 +21,14 @@
 
 -(id) init {
 	if( (self=[super init] )) {
-    
     isTouchEnabled = YES;
-    
-    goodie = [NoisySprite node];
+
+    SimpleAudioEngine *sae = [SimpleAudioEngine sharedEngine];
+
+    goodie = [[NoisySprite node] retain];    
     [goodie setPosition:CGPointFromString(@"0,0")];
     
-    [self schedule: @selector(step:)];
+      //[self schedule: @selector(step:)];
 	}
 	return self;
 }
@@ -36,8 +37,15 @@
   
 }
 
-- (void) moveGoodie: (int) distance {
-  
+- (void) moveGoodie: (CGFloat) distance {
+
+  if ( (goodie.position.x != 100) && (goodie.position.x != -100) ) {
+    CGPoint newPoint = [goodie position];
+    newPoint.x += distance;
+    [goodie setPosition: newPoint];
+  }
+  NSLog(@"play");
+  [(SimpleAudioEngine*) sae playEffect:@"goodie.mp3" pitch:1.0f pan:0.0f gain:1.0f];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -46,12 +54,11 @@
   }else{
     UITouch *myTouch = [touches  anyObject];
     CGPoint location = [myTouch locationInView: [myTouch view]];
-    NSLog(@"%f - x, %f - y", location.x, location.y);
     if (location.y < 240 ) {
-      NSLog(@"left");
+      [self moveGoodie:-10.0f];
     }
     else {
-      NSLog(@"right");
+      [self moveGoodie:10.0f];
     }
   }
 }
@@ -59,5 +66,10 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 
+-(void) dealloc{
+  
+  [goodie dealloc];
+  [super dealloc];
+}
 
 @end
